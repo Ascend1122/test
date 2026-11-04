@@ -272,7 +272,7 @@ jobs:
           cache-from: type=registry,ref=swr.cn-north-12.myhuaweicloud.com/modelfoundry/triton-wheel-buildcache:${{ matrix.config.arch }}
           outputs: type=local,dest=./wheelhouse
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         # Consumed by the Test-Wheels NPU job below (and manually during PR
         # review), so it must run on every event that builds.
         if: github.event_name != 'push' || steps.new-commits.outputs.has_new_commits != 'false'

@@ -189,7 +189,7 @@ jobs:
           echo "${{ steps.fetch-npuir.outputs.npuir_sha }}" > npuir-payload/npuir-sha.txt
 
       - name: Upload npuir payload
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: npuir-payload-manylinux-${{ matrix.config.arch }}
           path: npuir-payload/
