@@ -164,6 +164,31 @@ jobs:
           echo "token=${API_KEY}" >> "$GITHUB_OUTPUT"
           echo "model=${MODEL}" >> "$GITHUB_OUTPUT"
 
+      - name: Debug refs and diff
+        shell: bash
+        env:
+          BASE_REF: ${{ steps.pr-context.outputs.base_ref }}
+          HEAD_SHA: ${{ steps.pr-context.outputs.head_sha }}
+        run: |
+          set -x
+          echo "GITHUB_EVENT_NAME=${GITHUB_EVENT_NAME}"
+          echo "base_ref=${BASE_REF:-<empty>}"
+          echo "head_sha=${HEAD_SHA:-<empty>}"
+          git --version
+          git remote -v
+          git branch -a
+          git log --oneline -5
+          if [ -n "${HEAD_SHA}" ]; then
+            git fetch origin "pull/${{ github.event.issue.number || github.event.pull_request.number }}/head" 2>&1 || true
+            git rev-parse --verify "${HEAD_SHA}^{commit}" 2>&1 || echo "HEAD_SHA not resolvable"
+          fi
+          git fetch origin "${BASE_REF:-main}" 2>&1 || true
+          MB=$(git merge-base "origin/${BASE_REF:-main}" "${HEAD_SHA:-HEAD}" 2>&1) || { echo "merge-base failed: ${MB}"; MB=""; }
+          echo "merge-base=${MB}"
+          if [ -n "${MB}" ]; then
+            git diff --name-only "${MB}..${HEAD_SHA:-HEAD}"
+          fi
+
       - name: Run Doc Quality Review
         uses: alibaba/open-code-review@main
         timeout-minutes: 30
