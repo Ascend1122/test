@@ -56,7 +56,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           # pull_request_target: checkout PR head so we build what was proposed.
           # push: checkout the triggering commit.
