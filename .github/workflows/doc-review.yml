@@ -74,7 +74,7 @@ permissions:
 
 jobs:
   doc-review:
-    runs-on: linux-amd64-cpu-8-hk
+    runs-on: ubuntu-latest
     timeout-minutes: 35
     if: |
       github.event_name == 'pull_request_target'
