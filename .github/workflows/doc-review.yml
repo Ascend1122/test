@@ -167,7 +167,6 @@ jobs:
       - name: Run Doc Quality Review
         uses: alibaba/open-code-review@main
         timeout-minutes: 30
-        continue-on-error: true
         with:
           llm_url: ${{ steps.llm.outputs.url }}
           llm_auth_token: ${{ steps.llm.outputs.token }}
@@ -176,6 +175,7 @@ jobs:
           language: Chinese
           rule: ${{ steps.rule.outputs.generated == 'true' && '/tmp/doc-quality-rule.json' || '' }}
           effort: medium
+          stream_progress: true
           base_ref: ${{ steps.pr-context.outputs.base_ref }}
           head_sha: ${{ steps.pr-context.outputs.head_sha }}
 
