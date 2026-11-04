@@ -182,10 +182,8 @@ def main():
             },
         ],
         "include": [
-            "docs/zh/**/*.md",
-            "docs/zh/**/*.rst",
-            "*.md",
-            "*.rst",
+            "**/*.md",
+            "**/*.rst",
         ],
     }
 
