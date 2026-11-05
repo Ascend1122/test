@@ -19,7 +19,7 @@
 # LLM credentials (shared with schedule_doc_translate.yaml):
 #   secret    TRANSLATION_ASCEND       default LLM API key (Volcengine glm-5.2)
 #   secret    LLM_API_KEY              used when api_base/model are overridden
-#   secret    GITCODE_TOKEN            gitcode.com access token for the private
+#   secret    DOC_QUALITY_TOKEN       gitcode.com access token for the private
 #                                      doc-quality repo (read-only scope)
 #   variable  DOC_REVIEW_LLM_API_BASE  optional override LLM API endpoint
 #   variable  DOC_REVIEW_LLM_MODEL     optional override model name
@@ -63,18 +63,19 @@ on:
       - 'docs/zh/**/*.rst'
       - '*.md'
       - '*.rst'
+      - 'docs/locale/en/LC_MESSAGES/**/*.po'
       - '.github/workflows/doc-review.yml'
       - '.github/doc-review/**'
   issue_comment:
     types: [created]
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
 
 jobs:
   doc-review:
-    runs-on: linux-amd64-cpu-8-hk
+    runs-on: ubuntu-latest
     timeout-minutes: 35
     if: |
       github.event_name == 'pull_request_target'
@@ -112,7 +113,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
 
       - name: Clone doc-quality and generate rule JSON
         id: rule
@@ -120,13 +121,13 @@ jobs:
         timeout-minutes: 5
         continue-on-error: true
         env:
-          GITCODE_TOKEN: ${{ secrets.GITCODE_TOKEN }}
+          DOC_QUALITY_TOKEN: ${{ secrets.DOC_QUALITY_TOKEN }}
         run: |
           set -euo pipefail
           # Private repo: authenticate via https://<token>@gitcode.com/...
-          # GITCODE_TOKEN is a read-only access token created under the
+          # DOC_QUALITY_TOKEN is a read-only access token created under the
           # gitcode.com account that owns HJ112358/doc-quality.
-          CLONE_URL="https://oauth2:${GITCODE_TOKEN}@gitcode.com/HJ112358/doc-quality.git"
+          CLONE_URL="https://oauth2:${DOC_QUALITY_TOKEN}@gitcode.com/HJ112358/doc-quality.git"
           git clone --depth 1 "${CLONE_URL}" /tmp/doc-quality
           echo "doc-quality HEAD: $(git -C /tmp/doc-quality rev-parse HEAD)"
           python .github/doc-review/generate_rule.py /tmp/doc-quality /tmp/doc-quality-rule.json
@@ -176,6 +177,10 @@ jobs:
           language: Chinese
           rule: ${{ steps.rule.outputs.generated == 'true' && '/tmp/doc-quality-rule.json' || '' }}
           effort: medium
+          stream_progress: true
+          checkpoint_range: true
+          incremental: true
+          resolve_outdated: 'true'
           base_ref: ${{ steps.pr-context.outputs.base_ref }}
           head_sha: ${{ steps.pr-context.outputs.head_sha }}
 

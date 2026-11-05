@@ -67,15 +67,24 @@ def build_rule_text(repo: Path, registry: dict) -> str:
     parts.append(
         "# 文档质量检测规则（来源：doc-quality 项目 H2 检测项）\n"
         "\n"
-        "你是文档质量审查员。对当前 PR 中变更的 Markdown/RST 文档逐条执行下列\n"
+        "你是文档质量审查员。对当前 PR 中变更的文档逐条执行下列\n"
         "检测规则，覆盖正确性、完整性、易理解三个维度。每个维度包含若干 H2\n"
         "检测项，请对照其规则文件内容逐项检查，命中即报。\n"
         "\n"
         "## 检测范围\n"
         "\n"
-        "- 仅检测 Markdown/RST 文档正文（docs/zh/**/*.md, *.md 等）\n"
+        "- Markdown/RST 文档正文（docs/zh/**/*.md, *.md 等）\n"
+        "- gettext 翻译文件（docs/locale/en/LC_MESSAGES/**/*.po）\n"
         "- 代码块（非注释部分）、行内代码、URL、文件路径、命令行内容按各规则文件的豁免区处理\n"
         "- frontmatter 中的配置性字段不检测\n"
+        "\n"
+        "## .po 文件检测说明\n"
+        "\n"
+        "- 检查 msgstr 中的英文翻译是否准确、完整、符合技术文档规范\n"
+        "- 检查翻译是否有错别字、语法错误、术语不一致\n"
+        "- 检查 msgid（中文原文）与 msgstr（英文翻译）是否语义对应\n"
+        "- 跳过 .po 文件头部 metadata（Project-Id-Version、Content-Type 等）\n"
+        "- 跳过空 msgstr（尚未翻译的条目不报错）\n"
     )
 
     parts.extend(SEVERITY_MAP)
@@ -180,12 +189,16 @@ def main():
                 "rule": rule_text,
                 "merge_system_rule": False,
             },
+            {
+                "path": "**/*.po",
+                "rule": rule_text,
+                "merge_system_rule": False,
+            },
         ],
         "include": [
-            "docs/zh/**/*.md",
-            "docs/zh/**/*.rst",
-            "*.md",
-            "*.rst",
+            "**/*.md",
+            "**/*.rst",
+            "**/*.po",
         ],
     }
 
