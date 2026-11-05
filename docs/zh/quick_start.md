@@ -29,7 +29,7 @@
 ## 快速安装
 
 ```bash
-pip install triton-asceaand --extra-index-url=https://mirrors.huaweicloud.com/ascend/repos/pypi
+pip install triton-ascend --extra-index-url=https://mirrors.huaweicloud.com/ascend/repos/pypi
 ```
 
 ## 快速开始
