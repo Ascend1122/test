@@ -17,7 +17,7 @@ msgid "Triton-Ascend FAQ"
 msgstr "Triton-Ascend FAQ"
 
 msgid "1. 安装与环境配置"
-msgstr "1\\. Installation and environment configuration"
+msgstr "1\\. Installation or environment configuration"
 
 msgid "**Q: 如何正确安装 Triton-Ascend？是否支持 pip 直接安装？**"
 msgstr "**Q: How do you correctly install Triton-Ascend? Can you install it directly using pip?**"
@@ -61,7 +61,7 @@ msgid "**Q: NPU 运行结果和 PyTorch/CPU/GPU 参考结果不一致，如何�
 msgstr "**Q: The NPU execution results are inconsistent with the PyTorch/CPU/GPU reference results. How do you troubleshoot this?**"
 
 msgid "A: 用例请参考 [07_accuracy_comparison_example.md](../zh/examples/07_accuracy_comparison_example.md) 调试方法请参考 [解释器模式调试方法](./debug_guide/debugging.md#debug-interpreter-mode)"
-msgstr "A: For samples, refer to [07_accuracy_comparison_example.md](../zh/examples/07_accuracy_comparison_example.md). For debugging methods, refer to [Interpreter mode debugging method](./debug_guide/debugging.md#debug-interpreter-mode)"
+msgstr "A: For samples, refer to [07_accuracy_comparison_example.md](../zh/examples/071_accuracy_comparison_example.md). For debugging methods, refer to [Interpreter mode debugging method](./debug_guide/debugging.md#debug-interpreter-mode)"
 
 msgid "3. 错误代码与异常处理"
 msgstr "3\\. Error codes and exception handling"
