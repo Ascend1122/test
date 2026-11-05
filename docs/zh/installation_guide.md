@@ -321,4 +321,4 @@ root@localhost:/# npu-smi  info
 
 **问题七：如何确认机器的CPU类型？**
 
-答复：输出`lscpu`命令进行查看。
+答复：执行`lscpu`命令进行查看。
