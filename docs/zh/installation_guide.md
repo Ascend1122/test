@@ -1,6 +1,6 @@
 # 安装指南
 
-**Triton-Ascend**是适配华为Ascend处理器的Triton优化版本，提供核函数自动调优、算子编译及部署能力。支持Atlas A2系列产品、Atlas A3系列产品、Ascend 950PR&950DT系列产品，兼容Triton核心语法，并针对昇腾NPU特性进行了深度优化，包括自动解析核函数参数、优化内存访问逻辑、完善安全部署机制等。
+**Triton-Ascend**是适配华为Ascend处理器的Triton优化版本，提供核函数自动调优、算子编译及部署能力。支持Atlas A2系列产品、Atlas A3系列产品、Ascend 950PR&950DT系列产品，兼容Triton核心语法，并针对昇腾NPU特性进行了深度优化。
 
 本指南指导开发者在**Ubuntu**环境下安装**Triton-Ascend**，涵盖快速安装、源码安装及镜像安装三种方式，并包含环境验证与常见问题排查。
 
@@ -127,9 +127,9 @@ pip install -e .
 4.1 获取源码：
 
   ```bash
-    git clone https://gitcode.com/cann/shmem.git
-    cd shmem
-    git checkout v1.7.0
+  git clone https://gitcode.com/cann/shmem.git
+  cd shmem
+  git checkout v1.7.0
   ```
 
 4.2 源码编译：
@@ -318,3 +318,7 @@ root@localhost:/# npu-smi  info
 +===========================+===============+======================================================================+
 | No running processes found in NPU 0                                                                              |
 ```
+
+**问题七：如何确认机器的CPU类型？**
+
+答复：执行`lscpu`命令，查看输出中的"Architecture"字段，x86架构显示为"x86_64"，Arm架构显示为"aarch64"。

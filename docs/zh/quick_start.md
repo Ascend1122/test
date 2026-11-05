@@ -4,7 +4,7 @@
 
 **Triton-Ascend**是适配华为Ascend处理器的Triton优化版本，用于高效进行核函数自动调优、算子编译及部署，通过兼容Triton核心语法并针对昇腾NPU特性进行深度优化，能够帮助用户在昇腾平台上快速开发和部署高性能计算任务。
 
-本文以**Ubuntu 22.04**环境下通过软件包部署方式在线安装并运行向量加法示例为例，指导用户快速上手使用**Triton-Ascend**。如需体验更多安装方式请阅读[安装指南](./installation_guide.md)文档。
+本文以**Ubuntu 22.04**环境下通过软件包部署方式在线安装并运行向量加法示例为例，指导用户快速上手使用**Triton-Ascend**。如需体验更多安装方式请阅读[安装指南](./installation_guidea.md)文档。
 
 ## 环境准备
 
@@ -12,7 +12,7 @@
 
 支持的操作系统：Linux（aarch64/x86_64）
 
-支持的Ascend产品：Atlas A2系列产品、Atlas A3系列产品、Ascend 950PR&950DT系列产品
+支持的Ascend产品：Atlas A3系列产品、Ascend 950PR&950DT系列产品
 
 最小硬件配置：单卡32GB内存（推荐）
 
