@@ -69,7 +69,7 @@ on:
     types: [created]
 
 permissions:
-  contents: read
+  contents: write
   pull-requests: write
 
 jobs:
@@ -177,6 +177,9 @@ jobs:
           rule: ${{ steps.rule.outputs.generated == 'true' && '/tmp/doc-quality-rule.json' || '' }}
           effort: medium
           stream_progress: true
+          checkpoint_range: true
+          incremental: true
+          resolve_outdated: 'true'
           base_ref: ${{ steps.pr-context.outputs.base_ref }}
           head_sha: ${{ steps.pr-context.outputs.head_sha }}
 
