@@ -149,7 +149,7 @@ jobs:
           if [ -z "${LLM_API_BASE}" ] && [ -z "${LLM_MODEL}" ]; then
             API_KEY="${TRANSLATION_ASCEND}"
             API_URL="https://st8tp3ajl0df3n8b8l8qu.apigateway-cn-beijing.volceapi.com/v1"
-            MODEL="glm-5.2"
+            MODEL="deepseek-v4-flash"
             echo "Using default provider (Volcengine glm-5.2) with TRANSLATION_ASCEND key"
           else
             API_KEY="${LLM_API_KEY}"
@@ -167,7 +167,7 @@ jobs:
 
       - name: Run Doc Quality Review
         uses: alibaba/open-code-review@main
-        timeout-minutes: 30
+        timeout-minutes: 60
         continue-on-error: true
         with:
           llm_url: ${{ steps.llm.outputs.url }}
