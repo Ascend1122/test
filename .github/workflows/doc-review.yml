@@ -63,6 +63,7 @@ on:
       - 'docs/zh/**/*.rst'
       - '*.md'
       - '*.rst'
+      - 'docs/locale/en/LC_MESSAGES/**/*.po'
       - '.github/workflows/doc-review.yml'
       - '.github/doc-review/**'
   issue_comment:
