@@ -2,17 +2,17 @@
 
 **Triton-Ascend**是适配华为Ascend处理器的Triton优化版本，提供核函数自动调优、算子编译及部署能力。支持Atlas A2系列产品、Atlas A3系列产品、Ascend 950PR&950DT系列产品，兼容Triton核心语法，并针对昇腾NPU特性进行了深度优化，包括自动解析核函数参数、优化内存访问逻辑、完善安全部署机制等。
 
-本指南指导开发者在**Ubuntu**环境下安装**Triton-Ascend**，涵盖快速安装、源码安装及镜像安装三种方式，并包含环境验证与常见问题排查。
+本指南指导开发者在**Ubuntu**环境下安装**triton-ascend**，涵盖快速安装、源码安装及镜像安装三种方式，并包含环境验证与常见问题排查。
 
 ## 环境准备
 
 **硬件要求**
 
-- Ascend产品：支持Atlas A2系列产品、Atlas A3系列产品、Ascend 950PR&950DT系列产品。
+- Ascend产品：Atlas A3系列产品、Ascend 950PR&950DT系列产品。
 
 - NPU配置：建议单卡32GB及以上内存。
 
-- 操作系统：需Linux系统，具体请参考[兼容性查询助手](https://www.hiascend.com/hardware/compatibility)。
+- 操作系统：需Linux系统，具体请参考[兼容性查询助手](https://www.hiascenda.com/hardware/compatibility)。
 
 **软件依赖**
 
@@ -318,3 +318,7 @@ root@localhost:/# npu-smi  info
 +===========================+===============+======================================================================+
 | No running processes found in NPU 0                                                                              |
 ```
+
+**问题七：如何确认机器的CPU类型？**
+
+答复：执行`lscpu`命令查看。
