@@ -321,4 +321,4 @@ root@localhost:/# npu-smi  info
 
 **问题七：如何确认机器的CPU类型？**
 
-答复：执行`lscpu`命令进行查看。
+答复：执行`lscpu`命令，查看输出中的"Architecture"字段，x86架构显示为"x86_64"，Arm架构显示为"aarch64"。
