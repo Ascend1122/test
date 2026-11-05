@@ -17,7 +17,7 @@
 #   - 评论手动触发：/doc-review 或 @doc-review
 #
 # LLM credentials (shared with schedule_doc_translate.yaml):
-#   secret    TRANSLATION_ASCEND       default LLM API key (Volcengine glm-5.2)
+#   secret    TRANSLATION_ASCEND       default LLM API key (Volcengine deepseek-v4-flash)
 #   secret    LLM_API_KEY              used when api_base/model are overridden
 #   secret    DOC_QUALITY_TOKEN       gitcode.com access token for the private
 #                                      doc-quality repo (read-only scope)
@@ -144,17 +144,17 @@ jobs:
           LLM_MODEL: ${{ vars.DOC_REVIEW_LLM_MODEL }}
         run: |
           set -euo pipefail
-          # Default: Volcengine glm-5.2 with TRANSLATION_ASCEND key.
+          # Default: Volcengine deepseek-v4-flash with TRANSLATION_ASCEND key.
           # Override: when LLM_API_BASE/LLM_MODEL vars are set, use LLM_API_KEY.
           if [ -z "${LLM_API_BASE}" ] && [ -z "${LLM_MODEL}" ]; then
             API_KEY="${TRANSLATION_ASCEND}"
             API_URL="https://st8tp3ajl0df3n8b8l8qu.apigateway-cn-beijing.volceapi.com/v1"
             MODEL="deepseek-v4-flash"
-            echo "Using default provider (Volcengine glm-5.2) with TRANSLATION_ASCEND key"
+            echo "Using default provider (Volcengine deepseek-v4-flash) with TRANSLATION_ASCEND key"
           else
             API_KEY="${LLM_API_KEY}"
             API_URL="${LLM_API_BASE:-https://st8tp3ajl0df3n8b8l8qu.apigateway-cn-beijing.volceapi.com/v1}"
-            MODEL="${LLM_MODEL:-glm-5.2}"
+            MODEL="${LLM_MODEL:-deepseek-v4-flash}"
             echo "Using override provider (api_base=${API_URL}, model=${MODEL}) with LLM_API_KEY"
           fi
           if [ -z "${API_KEY}" ]; then
@@ -167,7 +167,7 @@ jobs:
 
       - name: Run Doc Quality Review
         uses: alibaba/open-code-review@main
-        timeout-minutes: 60
+        timeout-minutes: 200
         continue-on-error: true
         with:
           llm_url: ${{ steps.llm.outputs.url }}
