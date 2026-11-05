@@ -200,6 +200,13 @@ def main():
             "**/*.rst",
             "**/*.po",
         ],
+        # include is force-include (additive), not an allowlist — non-matching
+        # files still fall through to OCR's built-in extension allowlist. To
+        # achieve a strict "docs-only" whitelist, exclude all code/config/binary
+        # extensions that OCR would otherwise review with default rules.
+        "exclude": [
+            "**/*.{go,py,pyi,ipynb,java,kt,scala,rs,c,cpp,cc,cxx,h,hpp,hxx,cs,rb,php,swift,ts,tsx,js,jsx,mjs,cjs,vue,svelte,lua,pl,sh,bash,zsh,fish,ps1,bat,cmd,sql,json,jsonc,yaml,yml,toml,ini,cfg,conf,xml,html,htm,css,scss,sass,less,mo,pot,lock,sum,mod,work,gradle,cmake,make,Dockerfile,Makefile}",
+        ],
     }
 
     out.parent.mkdir(parents=True, exist_ok=True)
