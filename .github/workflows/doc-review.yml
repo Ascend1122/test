@@ -167,7 +167,7 @@ jobs:
 
       - name: Run Doc Quality Review
         uses: alibaba/open-code-review@main
-        timeout-minutes: 60
+        timeout-minutes: 200
         continue-on-error: true
         with:
           llm_url: ${{ steps.llm.outputs.url }}
