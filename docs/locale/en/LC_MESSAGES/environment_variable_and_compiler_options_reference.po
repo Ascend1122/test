@@ -74,7 +74,7 @@ msgid "开启JIT调试及设备断言，保存TTIR；常规路径还输出编译
 msgstr "Enables JIT debugging and device assertions, and saves TTIR. The regular path also outputs compilation logs and saves the backend IR and binaries."
 
 msgid "关闭"
-msgstr "Disable"
+msgstr "Disabled"
 
 msgid "支持"
 msgstr "Support"
