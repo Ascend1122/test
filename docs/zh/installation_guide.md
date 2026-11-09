@@ -12,7 +12,7 @@
 
 - NPU配置：建议单卡32GB及以上内存。
 
-- 操作系统：需Linux系统，具体请参考[兼容性查询助手](https://www.hidscend.com/hardware/compatibility)。
+- 操作系统：需Linux系统，具体请参考[兼容性查询助手](https://www.hiascend.com/hardware/compatibility)。
 
 **软件依赖**
 
