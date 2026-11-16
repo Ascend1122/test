@@ -62,7 +62,6 @@ pip install -e . --extra-index-url=https://repo.huaweicloud.com/repository/pypi/
 
     ```bash
     git clone --no-checkout https://github.com/llvm/llvm-project.git
-    cd llvm-project
     git checkout f6ded0be897e2878612dd903f7e8bb85448269e5
     wget https://raw.githubusercontent.com/triton-lang/triton-ascend/main/third_party/ascend/patch/llvm_patch_f6ded0b.patch
     git apply llvm_patch_f6ded0b.patch
@@ -297,24 +296,3 @@ triton-ascend 3.2.1 requires triton==3.5.0, but you have triton 3.5.1 which is i
 **问题五：Triton-Ascend 3.2.1版本依赖的Triton版本为何不一致？**
 
 答复：x86与ARM使用不同版本的社区Triton安装包，是因为社区从Triton 3.2版本开始提供x86安装包，而ARM安装包是从Triton 3.5版本开始提供的。
-
-**问题六：如何确认芯片类型？**
-
-可以使用npu-smi命令查看系统上的NPU型号。例如，在npu-smi info命令的输出中，“910B4”对应芯片类型Atlas A2系列产品：
-
-```text
-root@localhost:/# npu-smi  info
-+------------------------------------------------------------------------------------------------------------------+
-| npu-smi 26.0.rc1                            Version: 26.0.rc1                                                    |
-+---------------------------+---------------+----------------------------------------------------------------------+
-| NPU   Name                | Health        | Power(W)             Temp(C)                 Hugepages-Usage(page)   |
-| Chip                      | Bus-Id        | AICore(%)            Memory-Usage(MB)        HBM-Usage(MB)           |
-+===========================+===============+======================================================================+
-| 0     910B4               | OK            | 82.6                 32                      0    / 0                |
-| 0                         | 0000:C1:00.0  | 0                    0    / 0                2871 / 32768            |
-+===========================+===============+======================================================================+
-+---------------------------+---------------+----------------------------------------------------------------------+
-| NPU     Chip              | Process id    | Process name       | Process memory(MB)    | Process id in container |
-+===========================+===============+======================================================================+
-| No running processes found in NPU 0                                                                              |
-```

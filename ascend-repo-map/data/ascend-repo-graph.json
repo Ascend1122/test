@@ -1,0 +1,594 @@
+{
+  "meta": {
+    "title": "昇腾软件产品代码仓图谱",
+    "version": "1.0.0",
+    "updated": "2026-11-12",
+    "description": "覆盖昇腾文档站 12 大软件产品及其二级产品/组件的开源代码仓映射，含 Gitcode/GitHub/Gitee 三平台地址、迁移状态与产品间关联关系。可作为昇腾生态导航页、README 互链、浏览器插件等工具的统一数据源。",
+    "sources": [
+      "https://www.hiascend.com/zh/document",
+      "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/latest/index/index.html",
+      "https://gitcode.com/CANN",
+      "https://gitcode.com/Ascend",
+      "https://github.com/Ascend",
+      "https://gitee.com/ascend"
+    ],
+    "conventions": {
+      "status": {
+        "active": "主仓，活跃维护",
+        "mirror": "同内容其他平台镜像",
+        "migrated": "已迁移，原地址仅作指针",
+        "archived": "已归档，勿再使用",
+        "legacy": "Gitee 遗留仓，多数已停止维护"
+      },
+      "urls": "urls 中第一个键为该仓当前主平台；未列出的平台表示该仓无此平台地址"
+    }
+  },
+  "platforms": {
+    "gitcode": {
+      "name": "Gitcode（昇腾新家，2025.8 起社区整体迁入）",
+      "orgs": {
+        "cann": "https://gitcode.com/CANN",
+        "ascend": "https://gitcode.com/Ascend"
+      }
+    },
+    "github": {
+      "name": "GitHub",
+      "orgs": {
+        "ascend": "https://github.com/Ascend",
+        "vllm-project": "https://github.com/vllm-project",
+        "triton-lang": "https://github.com/triton-lang",
+        "sgl-project": "https://github.com/sgl-project"
+      }
+    },
+    "gitee": {
+      "name": "Gitee（遗留平台，ascend 组织多数仓已停维/迁移）",
+      "orgs": {
+        "ascend": "https://gitee.com/ascend"
+      }
+    }
+  },
+  "products": [
+    {
+      "id": "cann",
+      "name": "CANN",
+      "fullName": "昇腾异构计算架构 Compute Architecture for Neural Networks",
+      "category": "异构计算架构",
+      "docUrl": "https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/latest/index/index.html",
+      "portalUrl": "https://www.hiascend.com/cann",
+      "orgs": { "gitcode": "https://gitcode.com/CANN" },
+      "groups": [
+        {
+          "name": "算子库",
+          "repos": [
+            { "name": "ops-nn", "desc": "神经网络类计算算子库（G-Star）", "urls": { "gitcode": "https://gitcode.com/cann/ops-nn" } },
+            { "name": "ops-math", "desc": "数学类基础计算算子库（G-Star）", "urls": { "gitcode": "https://gitcode.com/cann/ops-math" } },
+            { "name": "ops-transformer", "desc": "Transformer 类大模型算子库（G-Star）", "urls": { "gitcode": "https://gitcode.com/cann/ops-transformer" } },
+            { "name": "ops-cv", "desc": "图像处理、目标检测算子库", "urls": { "gitcode": "https://gitcode.com/cann/ops-cv" } },
+            { "name": "ops-tensor", "desc": "张量类计算基础算子库", "urls": { "gitcode": "https://gitcode.com/cann/ops-tensor" } },
+            { "name": "ops-blas", "desc": "高性能线性代数与轻量 GEMM 算子库", "urls": { "gitcode": "https://gitcode.com/cann/ops-blas" } },
+            { "name": "ops-fft", "desc": "FFT 类计算基础算子库", "urls": { "gitcode": "https://gitcode.com/cann/ops-fft" } },
+            { "name": "ops-sparse", "desc": "高性能稀疏矩阵计算算子库", "urls": { "gitcode": "https://gitcode.com/cann/ops-sparse" } },
+            { "name": "ops-solver", "desc": "高级数值求解算子库", "urls": { "gitcode": "https://gitcode.com/cann/ops-solver" } },
+            { "name": "ops-rand", "desc": "随机数生成算子库", "urls": { "gitcode": "https://gitcode.com/cann/ops-rand" } },
+            { "name": "ops-gnn", "desc": "图神经网络（GNN）算子库，支持 PYG/DGL", "urls": { "gitcode": "https://gitcode.com/cann/ops-gnn" } },
+            { "name": "ops-collections", "desc": "高性能容器模板库（static_map/dynamic_map/set 等）", "urls": { "gitcode": "https://gitcode.com/cann/ops-collections" } },
+            { "name": "ops-ras", "desc": "RAS 相关算子库", "urls": { "gitcode": "https://gitcode.com/cann/ops-ras" } },
+            { "name": "opbase", "desc": "算子库基础框架，提供公共依赖与基础调度能力", "urls": { "gitcode": "https://gitcode.com/cann/opbase" } },
+            { "name": "ops-test-kit", "desc": "TTK 全链路自动化算子测试框架", "urls": { "gitcode": "https://gitcode.com/cann/ops-test-kit" } },
+            { "name": "ops-multimodal-fusion", "desc": "基于 AscendC 的 PyTorch 自定义多模态算子库", "urls": { "gitcode": "https://gitcode.com/cann/ops-multimodal-fusion" } },
+            { "name": "multimodal-ops", "desc": "多模态 AI 算子库（编码/融合/几何/扩散）", "urls": { "gitcode": "https://gitcode.com/cann/multimodal-ops" } },
+            { "name": "ops-tilelang", "desc": "TileLang 高性能算子仓", "urls": { "gitcode": "https://gitcode.com/cann/ops-tilelang" } },
+            { "name": "gauss-splat", "desc": "3D Gaussian Splatting 渲染加速库", "urls": { "gitcode": "https://gitcode.com/cann/gauss-splat" } },
+            { "name": "cann-ops", "desc": "Gitee 时代的开发者共建算子仓（已迁移 Gitcode）", "urls": { "gitee": "https://gitee.com/ascend/cann-ops" }, "status": "legacy" }
+          ]
+        },
+        {
+          "name": "领域加速库",
+          "repos": [
+            { "name": "ascend-transformer-boost", "desc": "Transformer 加速库（ATB），高性能融合算子", "urls": { "gitcode": "https://gitcode.com/cann/ascend-transformer-boost" } },
+            { "name": "sip", "desc": "高性能信号处理算子加速库", "urls": { "gitcode": "https://gitcode.com/cann/sip" } },
+            { "name": "ascend-boost-comm", "desc": "算子公共平台：南向对接算子库、北向支撑加速库", "urls": { "gitcode": "https://gitcode.com/cann/ascend-boost-comm" } },
+            { "name": "elec-ops-inspection", "desc": "电力装备巡检算子库（电力 SIG）", "urls": { "gitcode": "https://gitcode.com/cann/elec-ops-inspection" } },
+            { "name": "elec-ops-prediction", "desc": "电力负荷预测算子库（电力 SIG）", "urls": { "gitcode": "https://gitcode.com/cann/elec-ops-prediction" } },
+            { "name": "elec-ops-simulation", "desc": "电力仿真求解算子库（电力 SIG）", "urls": { "gitcode": "https://gitcode.com/cann/elec-ops-simulation" } },
+            { "name": "oil-gas-ops-prospect", "desc": "油气勘探算子库（地震成像/FWI）", "urls": { "gitcode": "https://gitcode.com/cann/oil-gas-ops-prospect" } },
+            { "name": "bio-ops-molecule", "desc": "生命科学分子模拟算子库", "urls": { "gitcode": "https://gitcode.com/cann/bio-ops-molecule" } },
+            { "name": "mat-chem-sim-pred", "desc": "材料化学仿真与预测领域计算层", "urls": { "gitcode": "https://gitcode.com/cann/mat-chem-sim-pred" } },
+            { "name": "crypto", "desc": "密码学高性能算子库（密码 SIG）", "urls": { "gitcode": "https://gitcode.com/cann/crypto" } },
+            { "name": "its-stable-llm", "desc": "交通大模型训练稳定性分析（transportation SIG）", "urls": { "gitcode": "https://gitcode.com/cann/its-stable-llm" } },
+            { "name": "its-matrix-computation", "desc": "GEMM 分块策略自动优化（transportation SIG）", "urls": { "gitcode": "https://gitcode.com/cann/its-matrix-computation" } },
+            { "name": "its-trip", "desc": "交通大模型智能决策闭环（transportation SIG）", "urls": { "gitcode": "https://gitcode.com/cann/its-trip" } }
+          ]
+        },
+        {
+          "name": "通信库",
+          "repos": [
+            { "name": "hccl", "desc": "集合通信库 Huawei Collective Communication Library", "urls": { "gitcode": "https://gitcode.com/cann/hccl" } },
+            { "name": "hcomm", "desc": "HCCL 的通信基础库（通信域/通信资源管理）", "urls": { "gitcode": "https://gitcode.com/cann/hcomm" } },
+            { "name": "hixl", "desc": "昇腾单边通信库 Huawei Xfer Library", "urls": { "gitcode": "https://gitcode.com/cann/hixl" } },
+            { "name": "shmem", "desc": "基于 OpenSHMEM 的多机多卡内存通信库", "urls": { "gitcode": "https://gitcode.com/cann/shmem" } },
+            { "name": "asc-comm", "desc": "通算融合场景统一高性能数据面", "urls": { "gitcode": "https://gitcode.com/cann/asc-comm" } },
+            { "name": "catccos", "desc": "计算-通信融合算子模板库", "urls": { "gitcode": "https://gitcode.com/cann/catccos" } }
+          ]
+        },
+        {
+          "name": "图引擎",
+          "repos": [
+            { "name": "ge", "desc": "Graph Engine 图编译器与执行器（支持 PyTorch/TF/ONNX 前端）", "urls": { "gitcode": "https://gitcode.com/cann/ge" } },
+            { "name": "metadef", "desc": "Ascend 元数据定义（MetaDef）", "urls": { "gitcode": "https://gitcode.com/cann/metadef" } },
+            { "name": "graph-autofusion", "desc": "自动融合组件（SuperKernel/Autofuse）", "urls": { "gitcode": "https://gitcode.com/cann/graph-autofusion" } },
+            { "name": "triton-inference-server-ge-backend", "desc": "Triton Inference Server 的 GE 后端（模型服务化）", "urls": { "gitcode": "https://gitcode.com/cann/triton-inference-server-ge-backend" } }
+          ]
+        },
+        {
+          "name": "编程语言与模板",
+          "repos": [
+            { "name": "asc-devkit", "desc": "Ascend C 算子程序开发语言（核心）", "urls": { "gitcode": "https://gitcode.com/cann/asc-devkit" } },
+            { "name": "pyasc", "desc": "Ascend C 的 Python 编程接口", "urls": { "gitcode": "https://gitcode.com/cann/pyasc" } },
+            { "name": "pypto", "desc": "PyPTO 并行 Tensor/Tile 编程范式", "urls": { "gitcode": "https://gitcode.com/cann/pypto" } },
+            { "name": "pto-isa", "desc": "PTO 虚拟指令集架构", "urls": { "gitcode": "https://gitcode.com/cann/pto-isa" } },
+            { "name": "pypto-gym", "desc": "PyPTO 算子与模型样例仓", "urls": { "gitcode": "https://gitcode.com/cann/pypto-gym" } },
+            { "name": "pypto-vscode", "desc": "PyPTO 全流程辅助 VSCode 工具", "urls": { "gitcode": "https://gitcode.com/cann/pypto-vscode" } },
+            { "name": "atvoss", "desc": "Vector 算子库模板（Ascend C Templates for VOSS）", "urls": { "gitcode": "https://gitcode.com/cann/atvoss" } },
+            { "name": "atvc", "desc": "Vector 算子模板头文件集合", "urls": { "gitcode": "https://gitcode.com/cann/atvc" } },
+            { "name": "catlass", "desc": "NPU 高性能矩阵乘模板库（类 CUTLASS）", "urls": { "gitcode": "https://gitcode.com/cann/catlass" } },
+            { "name": "asc-stl", "desc": "Ascend C 编程标准库", "urls": { "gitcode": "https://gitcode.com/cann/asc-stl" } },
+            { "name": "asnumpy", "desc": "昇腾 NPU 原生 NumPy（哈工大共建）", "urls": { "gitcode": "https://gitcode.com/cann/asnumpy" } },
+            { "name": "asnumpy-docs", "desc": "asnumpy 文档仓", "urls": { "gitcode": "https://gitcode.com/cann/asnumpy-docs" } },
+            { "name": "AscendNPU-IR", "desc": "基于 MLIR 的昇腾亲和算子编译中间表示", "urls": { "gitcode": "https://gitcode.com/Ascend/AscendNPU-IR", "github": "https://github.com/Ascend/AscendNPU-IR" } }
+          ]
+        },
+        {
+          "name": "运行时与驱动",
+          "repos": [
+            { "name": "runtime", "desc": "CANN 运行时与维测组件", "urls": { "gitcode": "https://gitcode.com/cann/runtime" } },
+            { "name": "driver", "desc": "基础驱动与资源管理调度", "urls": { "gitcode": "https://gitcode.com/cann/driver" } }
+          ]
+        },
+        {
+          "name": "工具",
+          "repos": [
+            { "name": "asc-tools", "desc": "Ascend C 配套调试工具", "urls": { "gitcode": "https://gitcode.com/cann/asc-tools" } },
+            { "name": "oam-tools", "desc": "故障定位工具（故障收集/报错分析）", "urls": { "gitcode": "https://gitcode.com/cann/oam-tools" } },
+            { "name": "npu-simulator", "desc": "NPUSim SoC 级芯片仿真工具", "urls": { "gitcode": "https://gitcode.com/cann/npu-simulator" } },
+            { "name": "cann-spack-package", "desc": "Spack 包管理配置", "urls": { "gitcode": "https://gitcode.com/cann/cann-spack-package" } },
+            { "name": "cann-local-lm", "desc": "端边侧轻量大模型推理（LLM/VLM）", "urls": { "gitcode": "https://gitcode.com/cann/cann-local-lm" } }
+          ]
+        },
+        {
+          "name": "AI 辅助开发",
+          "repos": [
+            { "name": "cannbot", "desc": "CANNBot 智能体主仓", "urls": { "gitcode": "https://gitcode.com/cann/cannbot" } },
+            { "name": "cannbot-skills", "desc": "CANNBot Skills 模块仓（G-Star）", "urls": { "gitcode": "https://gitcode.com/cann/cannbot-skills" } },
+            { "name": "cannbot-dsl", "desc": "CANNBot-DSL 复杂算子示例集", "urls": { "gitcode": "https://gitcode.com/cann/cannbot-dsl" } },
+            { "name": "cannbot-sentry", "desc": "Agent 工作流质量哨兵", "urls": { "gitcode": "https://gitcode.com/cann/cannbot-sentry" } },
+            { "name": "cannbot-knowledge", "desc": "CANN 知识仓（知识卡/检索）", "urls": { "gitcode": "https://gitcode.com/cann/cannbot-knowledge" } },
+            { "name": "cann-bench", "desc": "CANN 领域 AI 能力评测平台", "urls": { "gitcode": "https://gitcode.com/cann/cann-bench" } },
+            { "name": "model-agent", "desc": "昇腾模型 Agent（查适配/调优/部署）", "urls": { "gitcode": "https://gitcode.com/Ascend/model-agent", "github": "https://github.com/Ascend/msmodeling" } }
+          ]
+        },
+        {
+          "name": "学习与样例",
+          "repos": [
+            { "name": "cann-learning-hub", "desc": "CANN 学习中心（教程/示例/在线运行）", "urls": { "gitcode": "https://gitcode.com/cann/cann-learning-hub" } },
+            { "name": "cann-samples", "desc": "CANN 高性能实战样例与调优知识库", "urls": { "gitcode": "https://gitcode.com/cann/cann-samples" } },
+            { "name": "cann-recipes-infer", "desc": "LLM/多模态推理优化样例", "urls": { "gitcode": "https://gitcode.com/cann/cann-recipes-infer" } },
+            { "name": "cann-recipes-train", "desc": "LLM/多模态训练优化样例", "urls": { "gitcode": "https://gitcode.com/cann/cann-recipes-train" } },
+            { "name": "cann-recipes-docs", "desc": "训推性能优化技术文档", "urls": { "gitcode": "https://gitcode.com/cann/cann-recipes-docs" } },
+            { "name": "cann-recipes-spatial-intelligence", "desc": "空间智能业务样例", "urls": { "gitcode": "https://gitcode.com/cann/cann-recipes-spatial-intelligence" } },
+            { "name": "cann-recipes-embodied-ai", "desc": "具身智能业务样例", "urls": { "gitcode": "https://gitcode.com/cann/cann-recipes-embodied-ai" } },
+            { "name": "cann-recipes-harmony-infer", "desc": "鸿蒙端侧推理部署样例", "urls": { "gitcode": "https://gitcode.com/cann/cann-recipes-harmony-infer" } },
+            { "name": "multimodal-benchmark", "desc": "多模态算子/模型自动化工具链与评测基准", "urls": { "gitcode": "https://gitcode.com/cann/multimodal-benchmark" } },
+            { "name": "multimodal-samples", "desc": "多模态模型集合（自动驾驶/AIGC）", "urls": { "gitcode": "https://gitcode.com/cann/multimodal-samples" } },
+            { "name": "cann-launch-camp", "desc": "启航营高校活动作品仓", "urls": { "gitcode": "https://gitcode.com/cann/cann-launch-camp" } },
+            { "name": "cann-ops-competitions", "desc": "竞赛/开源课题/社区任务仓", "urls": { "gitcode": "https://gitcode.com/cann/cann-ops-competitions" } },
+            { "name": "cann-outreach", "desc": "产业活动与会议客户体验作品仓", "urls": { "gitcode": "https://gitcode.com/cann/cann-outreach" } }
+          ]
+        },
+        {
+          "name": "框架后端（CANN 组织内）",
+          "repos": [
+            { "name": "tensorflow", "desc": "Huawei Ascend TensorFlow Adapter", "urls": { "gitcode": "https://gitcode.com/cann/tensorflow" } },
+            { "name": "xla-npu", "desc": "XLA 昇腾后端（对接 JAX）", "urls": { "gitcode": "https://gitcode.com/cann/xla-npu" } },
+            { "name": "torchtitan-npu", "desc": "TorchTitan 昇腾扩展（CANN 组织）", "urls": { "gitcode": "https://gitcode.com/cann/torchtitan-npu" } }
+          ]
+        },
+        {
+          "name": "社区与基础设施",
+          "repos": [
+            { "name": "community", "desc": "CANN 社区治理章程/组织/规范", "urls": { "gitcode": "https://gitcode.com/cann/community" } },
+            { "name": "infrastructure", "desc": "CANN 基础设施团队公开信息", "urls": { "gitcode": "https://gitcode.com/cann/infrastructure" } },
+            { "name": "docs", "desc": "CANN 公共文档", "urls": { "gitcode": "https://gitcode.com/cann/docs" } },
+            { "name": "manifest", "desc": "repo 工具多仓同步配置", "urls": { "gitcode": "https://gitcode.com/cann/manifest" } },
+            { "name": "release-management", "desc": "CANN 版本发布管理", "urls": { "gitcode": "https://gitcode.com/cann/release-management" } },
+            { "name": "cmake", "desc": "公共编译/打包/安装脚本", "urls": { "gitcode": "https://gitcode.com/cann/cmake" } },
+            { "name": "cannlab", "desc": "CANNLab 免费在线算力平台", "urls": { "gitcode": "https://gitcode.com/org/cann/cannlab" } }
+          ]
+        }
+      ],
+      "related": ["pytorch", "tensorflow", "mindstudio", "mindspeed", "mindie", "triton", "vllm-ascend", "sglang"]
+    },
+    {
+      "id": "pytorch",
+      "name": "Ascend for PyTorch (torch-npu)",
+      "fullName": "PyTorch 框架昇腾适配插件",
+      "category": "AI框架",
+      "docUrl": "https://www.hiascend.com/document/detail/zh/Pytorch/01Pytorch%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/index.html",
+      "portalUrl": "https://www.hiascend.com/cn/developer/software/ai-frameworks/pytorch",
+      "orgs": { "gitcode": "https://gitcode.com/Ascend", "github": "https://github.com/Ascend" },
+      "groups": [
+        {
+          "name": "核心组件",
+          "repos": [
+            { "name": "pytorch", "desc": "TorchNPU：PyTorch 昇腾适配插件（核心）", "urls": { "gitcode": "https://gitcode.com/Ascend/pytorch", "github": "https://github.com/Ascend/pytorch", "gitee": "https://gitee.com/ascend/pytorch" }, "giteeStatus": "legacy" },
+            { "name": "op-plugin", "desc": "TorchNPU 算子适配插件", "urls": { "gitcode": "https://gitcode.com/Ascend/op-plugin", "github": "https://github.com/Ascend/op-plugin", "gitee": "https://gitee.com/ascend/op-plugin" }, "giteeStatus": "legacy" },
+            { "name": "torchair", "desc": "TorchNPU 图模式能力扩展库（G-Star）", "urls": { "gitcode": "https://gitcode.com/Ascend/torchair", "github": "https://github.com/Ascend/torchair", "gitee": "https://gitee.com/ascend/torchair" }, "giteeStatus": "legacy" }
+          ]
+        },
+        {
+          "name": "生态适配",
+          "repos": [
+            { "name": "apex", "desc": "NVIDIA Apex 昇腾适配", "urls": { "gitcode": "https://gitcode.com/Ascend/apex", "github": "https://github.com/Ascend/apex" } },
+            { "name": "vision", "desc": "Torchvision 昇腾适配插件", "urls": { "gitcode": "https://gitcode.com/Ascend/vision", "github": "https://github.com/Ascend/vision" } },
+            { "name": "transformers", "desc": "HuggingFace Transformers 昇腾适配", "urls": { "gitcode": "https://gitcode.com/Ascend/transformers", "github": "https://github.com/Ascend/transformers" } },
+            { "name": "ltc", "desc": "PyTorch Lazy Tensor Core 昇腾后端", "urls": { "gitcode": "https://gitcode.com/Ascend/ltc", "github": "https://github.com/Ascend/ltc" } },
+            { "name": "torchcomms_npu", "desc": "分布式通信算子库", "urls": { "gitcode": "https://gitcode.com/Ascend/torchcomms_npu", "github": "https://github.com/Ascend/torchcomms_npu" } },
+            { "name": "fbgemm-ascend", "desc": "推荐系统高性能 PyTorch NPU 算子库", "urls": { "gitcode": "https://gitcode.com/Ascend/fbgemm-ascend", "github": "https://github.com/Ascend/fbgemm-ascend" } },
+            { "name": "torchao-ascend", "desc": "TorchAO 昇腾扩展", "urls": { "gitcode": "https://gitcode.com/Ascend/torchao-ascend" } },
+            { "name": "torchtitan-ascend", "desc": "TorchTitan 昇腾适配版本", "urls": { "gitcode": "https://gitcode.com/Ascend/torchtitan-ascend" } },
+            { "name": "FSDPTurbo", "desc": "NPU 亲和的 FSDP 增强特性", "urls": { "gitcode": "https://gitcode.com/Ascend/FSDPTurbo" } },
+            { "name": "FSDPTraining", "desc": "FSDP2 大规模分布式训练最佳实践", "urls": { "gitcode": "https://gitcode.com/Ascend/FSDPTraining" } },
+            { "name": "torchft-ascend", "desc": "torchft 容错训练昇腾适配", "urls": { "gitcode": "https://gitcode.com/Ascend/torchft-ascend" } },
+            { "name": "TransferQueue", "desc": "异步高性能流式数据引擎", "urls": { "gitcode": "https://gitcode.com/Ascend/TransferQueue", "github": "https://github.com/Ascend/TransferQueue" } },
+            { "name": "Tensorpipe", "desc": "TensorPipe 昇腾适配", "urls": { "gitcode": "https://gitcode.com/Ascend/Tensorpipe", "github": "https://github.com/Ascend/Tensorpipe" } },
+            { "name": "pytorch-ecosystem", "desc": "Ascend for PyTorch 生态活动官方仓", "urls": { "gitcode": "https://gitcode.com/Ascend/pytorch-ecosystem" } },
+            { "name": "perf-reference-ascend", "desc": "基础性能测试参考设计", "urls": { "gitcode": "https://gitcode.com/Ascend/perf-reference-ascend" } }
+          ]
+        },
+        {
+          "name": "编译器相关 fork",
+          "repos": [
+            { "name": "llvm-project", "desc": "LLVM 昇腾功能 fork（支撑 AscendNPU-IR）", "urls": { "gitcode": "https://gitcode.com/Ascend/llvm-project" } },
+            { "name": "torch-mlir", "desc": "torch-mlir 昇腾 fork", "urls": { "gitcode": "https://gitcode.com/Ascend/torch-mlir" } },
+            { "name": "libdevice", "desc": "libdevice 昇腾实现", "urls": { "gitcode": "https://gitcode.com/Ascend/libdevice" } },
+            { "name": "monarch_npu", "desc": "monarch NPU 适配", "urls": { "gitcode": "https://gitcode.com/Ascend/monarch_npu" } },
+            { "name": "taco", "desc": "Torch Ascend Custom Operators", "urls": { "gitcode": "https://gitcode.com/Ascend/taco" } }
+          ]
+        }
+      ],
+      "related": ["cann", "tensorflow", "mindspeed", "mindie", "triton", "vllm-ascend", "sglang"]
+    },
+    {
+      "id": "tensorflow",
+      "name": "Ascend for TensorFlow",
+      "fullName": "TensorFlow 框架昇腾适配",
+      "category": "AI框架",
+      "docUrl": "https://www.hiascend.com/document/detail/zh/TensorFlowCommunity/01TensorFlow%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/index.html",
+      "orgs": { "gitcode": "https://gitcode.com/cann", "gitee": "https://gitee.com/ascend" },
+      "groups": [
+        {
+          "name": "适配器",
+          "repos": [
+            { "name": "tensorflow", "desc": "Huawei Ascend TensorFlow Adapter（活跃主仓）", "urls": { "gitcode": "https://gitcode.com/cann/tensorflow", "gitee": "https://gitee.com/ascend/tensorflow" }, "giteeStatus": "legacy" }
+          ]
+        }
+      ],
+      "related": ["cann", "pytorch"]
+    },
+    {
+      "id": "mindstudio",
+      "name": "MindStudio",
+      "fullName": "全流程开发工具链",
+      "category": "全流程开发工具链",
+      "docUrl": "https://www.hiascend.com/document/detail/zh/mindstudio/latest/index.html",
+      "portalUrl": "https://www.hiascend.com/cn/developer/software/mindstudio",
+      "orgs": { "gitcode": "https://gitcode.com/Ascend", "github": "https://github.com/Ascend" },
+      "groups": [
+        {
+          "name": "三大工具套件",
+          "repos": [
+            { "name": "msit", "desc": "msIT 推理工具链：模型压缩、调试调优", "urls": { "gitcode": "https://gitcode.com/Ascend/msit", "github": "https://github.com/Ascend/msit", "gitee": "https://gitee.com/ascend/msit" }, "giteeStatus": "legacy" },
+            { "name": "mstt", "desc": "msTT 训练工具链：分析迁移、精度调试、性能调优", "urls": { "gitcode": "https://gitcode.com/Ascend/mstt", "github": "https://github.com/Ascend/mstt", "gitee": "https://gitee.com/ascend/mstt" }, "giteeStatus": "legacy" },
+            { "name": "msot", "desc": "msOT 算子工具链：异常检测、算子调试、性能调优", "urls": { "gitcode": "https://gitcode.com/Ascend/msot", "github": "https://github.com/Ascend/msot" } }
+          ]
+        },
+        {
+          "name": "性能调优",
+          "repos": [
+            { "name": "msprof", "desc": "msProf 模型调优工具（性能数据采集解析）", "urls": { "gitcode": "https://gitcode.com/Ascend/msprof", "github": "https://github.com/Ascend/msprof" } },
+            { "name": "msprof-analyze", "desc": "性能分析工具（瓶颈识别）", "urls": { "gitcode": "https://gitcode.com/Ascend/msprof-analyze", "github": "https://github.com/Ascend/msprof-analyze" } },
+            { "name": "mspti", "desc": "msPTI Profiling Tools Interface", "urls": { "gitcode": "https://gitcode.com/Ascend/mspti", "github": "https://github.com/Ascend/mspti" } },
+            { "name": "msserviceprofiler", "desc": "推理服务化性能数据采集工具", "urls": { "gitcode": "https://gitcode.com/Ascend/msserviceprofiler", "github": "https://github.com/Ascend/msserviceprofiler" } },
+            { "name": "msopprof", "desc": "算子 Profiler 工具", "urls": { "gitcode": "https://gitcode.com/Ascend/msopprof", "github": "https://github.com/Ascend/msopprof" } },
+            { "name": "msmonitor", "desc": "一站式在线监控工具", "urls": { "gitcode": "https://gitcode.com/Ascend/msmonitor", "github": "https://github.com/Ascend/msmonitor" } },
+            { "name": "msinsight", "desc": "大模型可视化调优（MindStudio-Insight）", "urls": { "gitcode": "https://gitcode.com/Ascend/msinsight", "github": "https://github.com/Ascend/msinsight" } },
+            { "name": "msmodeling", "desc": "建模寻优工具（部署策略评估）", "urls": { "gitcode": "https://gitcode.com/Ascend/msmodeling", "github": "https://github.com/Ascend/msmodeling" } }
+          ]
+        },
+        {
+          "name": "精度与调试",
+          "repos": [
+            { "name": "msprobe", "desc": "全场景精度工具链（MindStudio-Probe）", "urls": { "gitcode": "https://gitcode.com/Ascend/msprobe", "github": "https://github.com/Ascend/msprobe" } },
+            { "name": "msdebug", "desc": "Debugger 调试器", "urls": { "gitcode": "https://gitcode.com/Ascend/msdebug", "github": "https://github.com/Ascend/msdebug" } },
+            { "name": "msmemscope", "desc": "整网内存调试调优工具", "urls": { "gitcode": "https://gitcode.com/Ascend/msmemscope", "github": "https://github.com/Ascend/msmemscope" } },
+            { "name": "mssanitizer", "desc": "内存/精度消毒器", "urls": { "gitcode": "https://gitcode.com/Ascend/mssanitizer", "github": "https://github.com/Ascend/mssanitizer" } },
+            { "name": "msopgen", "desc": "算子工程生成器", "urls": { "gitcode": "https://gitcode.com/Ascend/msopgen", "github": "https://github.com/Ascend/msopgen" } },
+            { "name": "msopcom", "desc": "算子公共组件", "urls": { "gitcode": "https://gitcode.com/Ascend/msopcom", "github": "https://github.com/Ascend/msopcom" } },
+            { "name": "msoptuner", "desc": "算子调优器", "urls": { "gitcode": "https://gitcode.com/Ascend/msoptuner", "github": "https://github.com/Ascend/msoptuner" } },
+            { "name": "mskl", "desc": "Kernel Launcher", "urls": { "gitcode": "https://gitcode.com/Ascend/mskl", "github": "https://github.com/Ascend/mskl" } },
+            { "name": "mskpp", "desc": "Kernel 性能预测", "urls": { "gitcode": "https://gitcode.com/Ascend/mskpp", "github": "https://github.com/Ascend/mskpp" } },
+            { "name": "msmodelslim", "desc": "模型量化压缩工具（ModelSlim）", "urls": { "gitcode": "https://gitcode.com/Ascend/msmodelslim", "github": "https://github.com/Ascend/msmodelslim" } },
+            { "name": "mstx", "desc": "Tools Extension Library", "urls": { "gitcode": "https://gitcode.com/Ascend/mstx", "github": "https://github.com/Ascend/mstx" } },
+            { "name": "mscommreport", "desc": "HCCL 中断类问题自动分析", "urls": { "gitcode": "https://gitcode.com/Ascend/mscommreport" } },
+            { "name": "msagent", "desc": "MindStudio 智能体（性能/精度自动分析）", "urls": { "gitcode": "https://gitcode.com/Ascend/msagent", "github": "https://github.com/Ascend/msagent" } },
+            { "name": "msboost", "desc": "推理训练极致性能加速工具", "urls": { "gitcode": "https://gitcode.com/Ascend/msboost" } },
+            { "name": "ATK", "desc": "MindStudio-ATK", "urls": { "gitcode": "https://gitcode.com/Ascend/ATK" } },
+            { "name": "ascendc-kernelgen-data", "desc": "AscendC 算子代码生成训练数据集", "urls": { "gitcode": "https://gitcode.com/Ascend/ascendc-kernelgen-data" } }
+          ]
+        }
+      ],
+      "related": ["cann", "pytorch", "mindspeed", "mindie"]
+    },
+    {
+      "id": "mindspeed",
+      "name": "MindSpeed",
+      "fullName": "昇腾大模型训练加速套件",
+      "category": "应用使能",
+      "docUrl": "https://www.hiascend.com/document/detail/zh/MindSpeed/latest/index.html",
+      "portalUrl": "https://www.hiascend.com/cn/developer/software/mindspeed",
+      "orgs": { "gitcode": "https://gitcode.com/Ascend", "github": "https://github.com/Ascend" },
+      "groups": [
+        {
+          "name": "训练套件",
+          "repos": [
+            { "name": "MindSpeed", "desc": "MindSpeed Core 大模型加速库", "urls": { "gitcode": "https://gitcode.com/Ascend/MindSpeed", "github": "https://github.com/Ascend/MindSpeed", "gitee": "https://gitee.com/ascend/MindSpeed" }, "giteeStatus": "legacy" },
+            { "name": "MindSpeed-LLM", "desc": "LLM 分布式训练框架（G-Star）", "urls": { "gitcode": "https://gitcode.com/Ascend/MindSpeed-LLM", "github": "https://github.com/Ascend/MindSpeed-LLM", "gitee": "https://gitee.com/ascend/MindSpeed-LLM" }, "giteeStatus": "legacy" },
+            { "name": "MindSpeed-MM", "desc": "多模态大模型训练套件（G-Star）", "urls": { "gitcode": "https://gitcode.com/Ascend/MindSpeed-MM", "github": "https://github.com/Ascend/MindSpeed-MM", "gitee": "https://gitee.com/ascend/MindSpeed-MM" }, "giteeStatus": "legacy" },
+            { "name": "MindSpeed-RL", "desc": "强化学习加速框架", "urls": { "gitcode": "https://gitcode.com/Ascend/MindSpeed-RL", "github": "https://github.com/Ascend/MindSpeed-RL" } },
+            { "name": "MindSpeed-Core-MS", "desc": "MindSpore + MindSpeed 连接组件", "urls": { "gitcode": "https://gitcode.com/Ascend/MindSpeed-Core-MS", "github": "https://github.com/Ascend/MindSpeed-Core-MS" } },
+            { "name": "MindSpeed-Ops", "desc": "训练业务自定义算子实现", "urls": { "gitcode": "https://gitcode.com/Ascend/MindSpeed-Ops" } },
+            { "name": "MindSpeed-Bridge", "desc": "基于 NVIDIA Megatron-Bridge 的训练适配框架", "urls": { "gitcode": "https://gitcode.com/Ascend/MindSpeed-Bridge" } },
+            { "name": "MindSpeed-Agent", "desc": "MindSpeed 系列套件开发 Agent", "urls": { "gitcode": "https://gitcode.com/Ascend/MindSpeed-Agent" } }
+          ]
+        },
+        {
+          "name": "Megatron 生态",
+          "repos": [
+            { "name": "Megatron-LM", "desc": "NVIDIA Megatron-LM 昇腾 fork", "urls": { "gitcode": "https://gitcode.com/Ascend/Megatron-LM", "github": "https://github.com/Ascend/Megatron-LM" } },
+            { "name": "MegatronAdaptor", "desc": "Megatron-LM 昇腾基础适配", "urls": { "gitcode": "https://gitcode.com/Ascend/MegatronAdaptor" } }
+          ]
+        },
+        {
+          "name": "RL 相关",
+          "repos": [
+            { "name": "slime-ascend", "desc": "slime（RL rollout 框架）昇腾适配", "urls": { "gitcode": "https://gitcode.com/Ascend/slime-ascend" } },
+            { "name": "AgentSDK", "desc": "Aura Agentic RL 训推框架（详见 MindSDK）", "urls": { "gitcode": "https://gitcode.com/Ascend/AgentSDK", "github": "https://github.com/Ascend/AgentSDK" } }
+          ]
+        }
+      ],
+      "related": ["cann", "pytorch", "mindstudio", "mindie", "vllm-ascend", "sglang"]
+    },
+    {
+      "id": "mindie",
+      "name": "MindIE",
+      "fullName": "昇腾推理引擎与推理服务化组件",
+      "category": "应用使能",
+      "docUrl": "https://www.hiascend.com/document/detail/zh/mindie/latest/index.html",
+      "portalUrl": "https://www.hiascend.com/cn/developer/software/mindie",
+      "orgs": { "gitcode": "https://gitcode.com/Ascend", "github": "https://github.com/Ascend" },
+      "groups": [
+        {
+          "name": "推理引擎",
+          "repos": [
+            { "name": "MindIE-LLM", "desc": "大语言模型推理引擎", "urls": { "gitcode": "https://gitcode.com/Ascend/MindIE-LLM", "github": "https://github.com/Ascend/MindIE-LLM" } },
+            { "name": "MindIE-Turbo", "desc": "LLM 推理引擎加速插件库", "urls": { "gitcode": "https://gitcode.com/Ascend/MindIE-Turbo", "github": "https://github.com/Ascend/MindIE-Turbo" } },
+            { "name": "FlashGen", "desc": "多模态生成训推加速套件", "urls": { "gitcode": "https://gitcode.com/Ascend/FlashGen" } }
+          ]
+        },
+        {
+          "name": "服务化框架",
+          "repos": [
+            { "name": "MindIE-Motor", "desc": "推理集群管理框架（Python）", "urls": { "gitcode": "https://gitcode.com/Ascend/MindIE-Motor", "github": "https://github.com/Ascend/MindIE-Motor" } },
+            { "name": "MindIE-Motor-CPP", "desc": "推理集群管理框架（C++）", "urls": { "gitcode": "https://gitcode.com/Ascend/MindIE-Motor-CPP" } },
+            { "name": "MindIE-PyMotor", "desc": "通用模型推理服务化框架（GitHub 镜像）", "urls": { "github": "https://github.com/Ascend/MindIE-PyMotor" } },
+            { "name": "text-embeddings-inference", "desc": "TEI 昇腾 fork（向量/嵌入推理）", "urls": { "gitcode": "https://gitcode.com/Ascend/text-embeddings-inference", "github": "https://github.com/Ascend/text-embeddings-inference" } }
+          ]
+        },
+        {
+          "name": "多模态生成",
+          "repos": [
+            { "name": "MindIE-SD", "desc": "视图/多模态生成推理套件（vLLM Omni、Diffusers 等）", "urls": { "gitcode": "https://gitcode.com/Ascend/MindIE-SD", "github": "https://github.com/Ascend/MindIE-SD" } }
+          ]
+        },
+        {
+          "name": "性能组件",
+          "repos": [
+            { "name": "MoonEP", "desc": "MoonEP 负载均衡昇腾版本", "urls": { "gitcode": "https://gitcode.com/Ascend/MoonEP", "github": "https://github.com/Ascend/MoonEP" } },
+            { "name": "HierarchicalKV-ascend", "desc": "推荐系统高性能 KV 存储加速库", "urls": { "gitcode": "https://gitcode.com/Ascend/HierarchicalKV-ascend", "github": "https://github.com/Ascend/HierarchicalKV-ascend" } },
+            { "name": "memcache", "desc": "高性能分布式 KVCache（对接 vllm-ascend/sglang/MindIE）", "urls": { "gitcode": "https://gitcode.com/Ascend/memcache", "github": "https://github.com/Ascend/memcache" } }
+          ]
+        }
+      ],
+      "related": ["cann", "vllm-ascend", "sglang", "mindspeed", "mindcluster"]
+    },
+    {
+      "id": "mindsdk",
+      "name": "MindSDK",
+      "fullName": "昇腾 AI 应用软件开发套件",
+      "category": "应用使能",
+      "docUrl": "https://www.hiascend.com/document/detail/zh/mindsdk/latest/index.html",
+      "portalUrl": "https://www.hiascend.com/cn/developer/software/mindsdk",
+      "orgs": { "gitcode": "https://gitcode.com/Ascend", "github": "https://github.com/Ascend" },
+      "groups": [
+        {
+          "name": "行业 SDK",
+          "repos": [
+            { "name": "VisionSDK", "desc": "图片/视频视觉分析 SDK", "urls": { "gitcode": "https://gitcode.com/Ascend/VisionSDK", "github": "https://github.com/Ascend/VisionSDK" } },
+            { "name": "MultimodalSDK", "desc": "大模型推理预处理多模态加速", "urls": { "gitcode": "https://gitcode.com/Ascend/MultimodalSDK", "github": "https://github.com/Ascend/MultimodalSDK" } },
+            { "name": "IndexSDK", "desc": "向量特征检索引擎（类 Faiss）", "urls": { "gitcode": "https://gitcode.com/Ascend/IndexSDK", "github": "https://github.com/Ascend/IndexSDK" } },
+            { "name": "RecSDK", "desc": "大规模推荐训推加速库", "urls": { "gitcode": "https://gitcode.com/Ascend/RecSDK", "github": "https://github.com/Ascend/RecSDK" } },
+            { "name": "DrivingSDK", "desc": "自动驾驶/具身智能训练加速套件", "urls": { "gitcode": "https://gitcode.com/Ascend/DrivingSDK", "github": "https://github.com/Ascend/DrivingSDK" } },
+            { "name": "AgentSDK", "desc": "Aura Agentic RL 训推一体框架", "urls": { "gitcode": "https://gitcode.com/Ascend/AgentSDK", "github": "https://github.com/Ascend/AgentSDK" } },
+            { "name": "RAGSDK", "desc": "大模型知识增强（RAG）开发套件", "urls": { "gitcode": "https://gitcode.com/Ascend/RAGSDK", "github": "https://github.com/Ascend/RAGSDK" } },
+            { "name": "MindInferenceService", "desc": "模型推理服务（快速部署）", "urls": { "gitcode": "https://gitcode.com/Ascend/MindInferenceService", "github": "https://github.com/Ascend/MindInferenceService" } },
+            { "name": "OMSDK", "desc": "智能边缘硬件管理平台 SDK（详见 MindEdge）", "urls": { "gitcode": "https://gitcode.com/Ascend/OMSDK", "github": "https://github.com/Ascend/OMSDK" } }
+          ]
+        },
+        {
+          "name": "检索与推荐组件",
+          "repos": [
+            { "name": "faiss", "desc": "Faiss 昇腾 fork（NPU 向量检索加速）", "urls": { "gitcode": "https://gitcode.com/Ascend/faiss" } },
+            { "name": "ops-rec", "desc": "推荐系统高性能融合算子仓", "urls": { "gitcode": "https://gitcode.com/Ascend/ops-rec" } }
+          ]
+        },
+        {
+          "name": "参考应用",
+          "repos": [
+            { "name": "mindsdk-referenceapps", "desc": "MindSDK 参考应用", "urls": { "gitcode": "https://gitcode.com/Ascend/mindsdk-referenceapps" } },
+            { "name": "DeepSelect", "desc": "端到端行业参考应用", "urls": { "github": "https://github.com/Ascend/DeepSelect" } },
+            { "name": "mindxsdk-referenceapps", "desc": "MindX SDK 参考应用（遗留）", "urls": { "github": "https://github.com/Ascend/mindxsdk-referenceapps" } }
+          ]
+        }
+      ],
+      "related": ["cann", "mindie", "mindedge"]
+    },
+    {
+      "id": "mindcluster",
+      "name": "MindCluster",
+      "fullName": "昇腾集群管理与运维组件",
+      "category": "应用使能",
+      "docUrl": "https://www.hiascend.com/document/detail/zh/mindcluster/latest/index.html",
+      "orgs": { "gitcode": "https://gitcode.com/Ascend", "github": "https://github.com/Ascend" },
+      "groups": [
+        {
+          "name": "集群组件",
+          "repos": [
+            { "name": "mind-cluster", "desc": "MindCluster 组件代码仓（ClusterSched/Ascend Docker Runtime/npu-exporter 等）", "urls": { "gitcode": "https://gitcode.com/Ascend/mind-cluster", "github": "https://github.com/Ascend/mind-cluster" } },
+            { "name": "ascend-deployer", "desc": "Ascend Deployer 一键安装部署", "urls": { "gitcode": "https://gitcode.com/Ascend/ascend-deployer" } },
+            { "name": "mindcluster-deploy", "desc": "MindCluster 部署样例库", "urls": { "gitcode": "https://gitcode.com/Ascend/mindcluster-deploy", "github": "https://github.com/Ascend/mindcluster-deploy" } },
+            { "name": "memfabric_hybrid", "desc": "内存池化基础软件（DRAM/显存混合池化）", "urls": { "gitcode": "https://gitcode.com/Ascend/memfabric_hybrid", "github": "https://github.com/Ascend/memfabric_hybrid" } },
+            { "name": "MindCluster-AscendNPUBurn", "desc": "芯片/链路硬件故障压测", "urls": { "gitcode": "https://gitcode.com/Ascend/MindCluster-AscendNPUBurn" } },
+            { "name": "workload_analysis", "desc": "负载分析工具", "urls": { "github": "https://github.com/Ascend/workload_analysis" } },
+            { "name": "slurm-atlas-plugin", "desc": "Slurm Atlas 插件", "urls": { "github": "https://github.com/Ascend/slurm-atlas-plugin" } },
+            { "name": "Ascend-CI", "desc": "Ascend CI 基础设施", "urls": { "github": "https://github.com/Ascend/Ascend-CI" } }
+          ]
+        }
+      ],
+      "related": ["cann", "mindie", "mindedge"]
+    },
+    {
+      "id": "mindedge",
+      "name": "MindEdge",
+      "fullName": "边缘 AI 组件（边缘节点/硬件管理）",
+      "category": "应用使能",
+      "docUrl": "https://www.hiascend.com/document/detail/zh/mindedge/latest/index.html",
+      "orgs": { "gitcode": "https://gitcode.com/Ascend", "github": "https://github.com/Ascend" },
+      "groups": [
+        {
+          "name": "边缘组件",
+          "repos": [
+            { "name": "MEF", "desc": "轻量化端边云协同框架（边缘节点/容器应用管理）", "urls": { "gitcode": "https://gitcode.com/Ascend/MEF", "github": "https://github.com/Ascend/MEF" } },
+            { "name": "OMSDK", "desc": "边缘硬件管理平台 SDK（Edge Management System）", "urls": { "gitcode": "https://gitcode.com/Ascend/OMSDK", "github": "https://github.com/Ascend/OMSDK" } },
+            { "name": "cann-local-lm", "desc": "端边侧轻量 LLM/VLM 推理（CANN 组织，跨链）", "urls": { "gitcode": "https://gitcode.com/cann/cann-local-lm" } },
+            { "name": "cann-recipes-harmony-infer", "desc": "鸿蒙端侧推理部署样例（CANN 组织，跨链）", "urls": { "gitcode": "https://gitcode.com/cann/cann-recipes-harmony-infer" } }
+          ]
+        }
+      ],
+      "related": ["cann", "mindcluster", "mindsdk"]
+    },
+    {
+      "id": "vllm-ascend",
+      "name": "vLLM-Ascend",
+      "fullName": "vLLM 昇腾插件（社区共维）",
+      "category": "三方资源",
+      "docUrl": "https://vllm-ascend.readthedocs.io/en/latest/",
+      "portalUrl": "https://www.hiascend.com/cn/dev-community/third-party/vllm",
+      "orgs": { "github": "https://github.com/vllm-project" },
+      "groups": [
+        {
+          "name": "主仓与上游",
+          "repos": [
+            { "name": "vllm-ascend", "desc": "vLLM on Ascend NPU 社区插件（活跃主仓）", "urls": { "github": "https://github.com/vllm-project/vllm-ascend" } },
+            { "name": "vllm", "desc": "vLLM 上游框架", "urls": { "github": "https://github.com/vllm-project/vllm" }, "role": "upstream" }
+          ]
+        }
+      ],
+      "related": ["cann", "triton", "sglang", "mindie", "mindspeed"]
+    },
+    {
+      "id": "triton",
+      "name": "Triton",
+      "fullName": "Triton-Ascend：基于昇腾的 Triton 编译框架",
+      "category": "三方资源",
+      "docUrl": "https://triton-ascend.readthedocs.io/zh-cn/latest/index.html",
+      "portalUrl": "https://www.hiascend.com/cn/dev-community/third-party/triton",
+      "orgs": { "github": "https://github.com/triton-lang" },
+      "groups": [
+        {
+          "name": "主仓与历史地址",
+          "repos": [
+            { "name": "triton-ascend", "desc": "Triton 语言与编译器昇腾后端（活跃主仓，已迁 GitHub）", "urls": { "github": "https://github.com/triton-lang/triton-ascend" } },
+            { "name": "triton-ascend (gitcode)", "desc": "Gitcode 历史仓（已归档，README 指向 GitHub 新仓）", "urls": { "gitcode": "https://gitcode.com/Ascend/triton-ascend" }, "status": "archived" },
+            { "name": "triton-ascend (gitee)", "desc": "Gitee 历史仓", "urls": { "gitee": "https://gitee.com/ascend/triton-ascend" }, "status": "legacy" }
+          ]
+        },
+        {
+          "name": "周边仓",
+          "repos": [
+            { "name": "Triton-distributed-ascend", "desc": "基于 Triton 的分布式计算框架（计算通信重叠）", "urls": { "gitcode": "https://gitcode.com/Ascend/Triton-distributed-ascend" } },
+            { "name": "triton-ascend-kernels", "desc": "Triton-Ascend Kernel 集合仓", "urls": { "gitcode": "https://gitcode.com/Ascend/triton-ascend-kernels" } },
+            { "name": "triton-ascend-ops", "desc": "Triton-Ascend 算子实验仓", "urls": { "github": "https://github.com/Ascend/triton-ascend-ops" } },
+            { "name": "triton-inference-server-ge-backend", "desc": "Triton Inference Server GE 后端（CANN 组织，跨链）", "urls": { "gitcode": "https://gitcode.com/cann/triton-inference-server-ge-backend" } },
+            { "name": "tilelang-ascend", "desc": "TileLang 昇腾后端（相关语言生态）", "urls": { "github": "https://github.com/tile-ai/tilelang-ascend/tree/ascendc_pto" }, "role": "related" }
+          ]
+        }
+      ],
+      "related": ["cann", "pytorch", "vllm-ascend", "sglang"]
+    },
+    {
+      "id": "sglang",
+      "name": "SGLang",
+      "fullName": "SGLang 高性能推理框架（昇腾适配）",
+      "category": "三方资源",
+      "docUrl": "https://docs.sglang.io/docs/hardware-platforms/ascend-npus/getting-started/installation",
+      "orgs": { "github": "https://github.com/sgl-project" },
+      "groups": [
+        {
+          "name": "上游与昇腾仓",
+          "repos": [
+            { "name": "sglang", "desc": "SGLang 上游框架（原生支持昇腾 A2/A3/950）", "urls": { "github": "https://github.com/sgl-project/sglang" }, "role": "upstream" },
+            { "name": "sglang (Ascend fork)", "desc": "昇腾侧 SGLang 维护开发 fork", "urls": { "github": "https://github.com/Ascend/sglang" } },
+            { "name": "ascend-sglang", "desc": "SGLang 昇腾辅助仓", "urls": { "github": "https://github.com/Ascend/ascend-sglang" } },
+            { "name": "sgl-sglang", "desc": "SGLang 昇腾辅助仓", "urls": { "github": "https://github.com/Ascend/sgl-sglang" } }
+          ]
+        }
+      ],
+      "related": ["cann", "vllm-ascend", "triton", "mindie", "mindspeed"]
+    }
+  ],
+  "relatedEcosystem": [
+    { "name": "ModelZoo-PyTorch", "desc": "昇腾模型库（PyTorch）", "urls": { "gitcode": "https://gitcode.com/Ascend/ModelZoo-PyTorch", "gitee": "https://gitee.com/ascend/ModelZoo-PyTorch" } },
+    { "name": "modelzoo", "desc": "Ascend ModelZoo", "urls": { "gitcode": "https://gitcode.com/Ascend/modelzoo" } },
+    { "name": "modelzoo-GPL", "desc": "GPL 协议模型库", "urls": { "gitcode": "https://gitcode.com/Ascend/modelzoo-GPL" } },
+    { "name": "verl", "desc": "火山引擎 RL 训练框架（支持昇腾，三方）", "urls": { "github": "https://github.com/vllm-project/verl" }, "note": "原 volcengine/verl，已迁 vllm-project" },
+    { "name": "LLaMA-Factory", "desc": "LLaMA-Factory 微调框架（昇腾适配，三方）", "urls": { "github": "https://github.com/hiyouga/LLaMA-Factory" } },
+    { "name": "mindspore", "desc": "昇思 MindSpore AI 框架（独立社区，未列入本次 12 产品口径）", "urls": { "github": "https://github.com/mindspore-ai/mindspore", "gitee": "https://gitee.com/mindspore/mindspore" } },
+    { "name": "community", "desc": "Ascend 社区核心管理仓（组织权限/SIG）", "urls": { "gitcode": "https://gitcode.com/Ascend/community", "github": "https://github.com/Ascend/community" } },
+    { "name": "docs", "desc": "Ascend 社区通用文档仓", "urls": { "gitcode": "https://gitcode.com/Ascend/docs", "github": "https://github.com/Ascend/docs" } },
+    { "name": "EcoDevHub", "desc": "生态技术创新项目/外部案例沉淀仓", "urls": { "gitcode": "https://gitcode.com/Ascend/EcoDevHub" } },
+    { "name": "solution-agent", "desc": "行业解决方案参考设计仓", "urls": { "gitcode": "https://gitcode.com/Ascend/solution-agent" } },
+    { "name": "agent-skills", "desc": "AI 辅助研发 Agent 技能仓", "urls": { "gitcode": "https://gitcode.com/Ascend/agent-skills", "github": "https://github.com/Ascend/agent-skills" } },
+    { "name": "samples", "desc": "昇腾样例仓（Gitee 遗留）", "urls": { "gitee": "https://gitee.com/ascend/samples" }, "status": "legacy" }
+  ],
+  "giteeLegacy": {
+    "description": "Gitee ascend 组织为昇腾开源 1.0 时代主阵地，2025 年起社区整体迁往 Gitcode（华为系新家）与 GitHub（三方仓）。存量 Gitee 仓多数保留只读/停维状态，仅作历史指针。",
+    "org": "https://gitee.com/ascend",
+    "migrationGuide": "https://gitcode.com/Ascend/discussions/1",
+    "notableMigrated": [
+      { "gitee": "https://gitee.com/ascend/cann-ops", "to": "gitcode.com/CANN（算子库体系：ops-nn/ops-math/...）" },
+      { "gitee": "https://gitee.com/ascend/triton-ascend", "to": "github.com/triton-lang/triton-ascend" },
+      { "gitee": "https://gitee.com/ascend/pytorch", "to": "gitcode.com/Ascend/pytorch（TorchNPU）" },
+      { "gitee": "https://gitee.com/ascend/mindspore", "to": "gitee.com/mindspore/mindspore（独立社区）" }
+    ]
+  }
+}
