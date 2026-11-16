@@ -12,7 +12,7 @@
 #   - docs/zh/**/*.md, docs/zh/**/*.rst   （中文文档目录）
 #   - *.md, *.rst                          （仓库根目录文档）
 #
-# 触发方式：
+# 触发方式（仅目标分支为 main 的 PR）：
 #   - PR 自动触发：opened / synchronize / reopened
 #   - 评论手动触发：/doc-review 或 @doc-review
 #
@@ -58,6 +58,7 @@ concurrency:
 on:
   pull_request_target:
     types: [opened, synchronize, reopened]
+    branches: [main]
     paths:
       - 'docs/zh/**/*.md'
       - 'docs/zh/**/*.rst'
@@ -109,6 +110,15 @@ jobs:
             });
             core.setOutput('base_ref', pullRequest.base.ref);
             core.setOutput('head_sha', pullRequest.head.sha);
+
+      - name: Enforce target branch
+        if: github.event_name == 'issue_comment'
+        shell: bash
+        run: |
+          if [ "${{ steps.pr-context.outputs.base_ref }}" != "main" ]; then
+            echo "::error::Doc review only runs on PRs targeting 'main', but this PR targets '${{ steps.pr-context.outputs.base_ref }}'."
+            exit 1
+          fi
 
       - name: Checkout repo
         uses: actions/checkout@v4
