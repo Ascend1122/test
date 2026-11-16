@@ -14,7 +14,7 @@
 #
 # 触发方式（仅目标分支为 main 的 PR）：
 #   - PR 自动触发：opened / synchronize / reopened
-#   - 评论手动触发：/doc-review 或 @doc-review
+#   - 评论手动触发：/doc-review 或 @doc-review（目标分支非 main 时静默跳过）
 #
 # LLM credentials (shared with schedule_doc_translate.yaml):
 #   secret    TRANSLATION_ASCEND       default LLM API key (Volcengine deepseek-v4-flash)
@@ -110,23 +110,17 @@ jobs:
             });
             core.setOutput('base_ref', pullRequest.base.ref);
             core.setOutput('head_sha', pullRequest.head.sha);
-
-      - name: Enforce target branch
-        if: github.event_name == 'issue_comment'
-        shell: bash
-        run: |
-          if [ "${{ steps.pr-context.outputs.base_ref }}" != "main" ]; then
-            echo "::error::Doc review only runs on PRs targeting 'main', but this PR targets '${{ steps.pr-context.outputs.base_ref }}'."
-            exit 1
-          fi
+            core.setOutput('base_ok', pullRequest.base.ref === 'main' ? 'true' : 'false');
 
       - name: Checkout repo
+        if: github.event_name == 'pull_request_target' || steps.pr-context.outputs.base_ok == 'true'
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: Clone doc-quality and generate rule JSON
         id: rule
+        if: github.event_name == 'pull_request_target' || steps.pr-context.outputs.base_ok == 'true'
         shell: bash
         timeout-minutes: 5
         continue-on-error: true
@@ -146,6 +140,7 @@ jobs:
 
       - name: Resolve LLM credentials
         id: llm
+        if: github.event_name == 'pull_request_target' || steps.pr-context.outputs.base_ok == 'true'
         shell: bash
         env:
           TRANSLATION_ASCEND: ${{ secrets.TRANSLATION_ASCEND }}
@@ -177,6 +172,7 @@ jobs:
 
       - name: Run Doc Quality Review
         uses: alibaba/open-code-review@main
+        if: github.event_name == 'pull_request_target' || steps.pr-context.outputs.base_ok == 'true'
         timeout-minutes: 200
         continue-on-error: true
         with:
